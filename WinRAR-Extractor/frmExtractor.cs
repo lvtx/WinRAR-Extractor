@@ -97,7 +97,7 @@ namespace WinRAR_Extractor
                 sw.Write(rarreg);
                 sw.Flush();
                 sw.Close();
-                MessageBox.Show("授权文件保存成功！", "提示");
+                MessageBox.Show(rarreg, "授权文件保存成功！");
             }
         }
 

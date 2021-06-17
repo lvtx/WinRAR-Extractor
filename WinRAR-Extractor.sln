@@ -8,12 +8,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRAR-Extractor", "WinRAR-
 		{E510275F-C4D1-4E4A-922C-9856CF1C8908} = {E510275F-C4D1-4E4A-922C-9856CF1C8908}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinRAR-Generate", "WinRAR-Generate\WinRAR-Generate.vcxproj", "{E510275F-C4D1-4E4A-922C-9856CF1C8908}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "说明文档", "说明文档", "{36A48AF4-68C7-48C1-84DC-1D625A8108D0}"
 	ProjectSection(SolutionItems) = preProject
 		ReadMe.md = ReadMe.md
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinRAR-Generate", "WinRAR-Generate\WinRAR-Generate.vcxproj", "{E510275F-C4D1-4E4A-922C-9856CF1C8908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,16 +27,16 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x64.Build.0 = Debug|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x86.Build.0 = Debug|Any CPU
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x64.ActiveCfg = Debug|x64
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x64.Build.0 = Debug|x64
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x86.ActiveCfg = Debug|x86
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Debug|x86.Build.0 = Debug|x86
 		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x64.ActiveCfg = Release|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x64.Build.0 = Release|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x86.ActiveCfg = Release|Any CPU
-		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x86.Build.0 = Release|Any CPU
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x64.ActiveCfg = Release|x64
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x64.Build.0 = Release|x64
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x86.ActiveCfg = Release|x86
+		{565E90CE-DFF9-4954-9B33-6CAA13BE508F}.Release|x86.Build.0 = Release|x86
 		{E510275F-C4D1-4E4A-922C-9856CF1C8908}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{E510275F-C4D1-4E4A-922C-9856CF1C8908}.Debug|Any CPU.Build.0 = Debug|Win32
 		{E510275F-C4D1-4E4A-922C-9856CF1C8908}.Debug|x64.ActiveCfg = Debug|x64

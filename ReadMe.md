@@ -14,3 +14,10 @@ C# WinRAR 简体中文-商业版 提取器
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0617/033023_6d15a355_1232593.png "003.png")<br />
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0617/033032_255a23ad_1232593.png "004.png")<br />
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0617/033042_6a8cf9f2_1232593.png "005.png")
+
+#### 更新日志
+
+2021-06-17
+1.  修改“授权文件生成”功能，增加授权信息提示。
+2.  新增x64位版本编译。
+3.  修复已知错误！

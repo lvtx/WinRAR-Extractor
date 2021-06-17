@@ -587,7 +587,7 @@ _LIBAPI char* KeyGenerate(const char* UserName, const char* LicenseType) {
 	//_tcscat_s(keyInfo, keyData);
 	_stprintf_s(keyInfo, TEXT("%s%s"), keyHead, keyData);
 
-	stlen = strlen(keyInfo);
+	stlen = (int)strlen(keyInfo);
 	memset(&keyInfo[stlen], 0, sizeof(keyInfo) - stlen);
 	//MessageBoxA(NULL, keyInfo, "UID", MB_OK);
 

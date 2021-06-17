@@ -54,6 +54,9 @@
     <ClInclude Include="math_functions\mb_sub_x.hpp">
       <Filter>math_functions</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -76,5 +79,10 @@
     <MASM Include="math_functions\mb_div_x_0.asm">
       <Filter>math_functions</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinRAR-Generate.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -268,7 +268,7 @@
             this.MaximizeBox = false;
             this.Name = "frmExtractor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WinRAR 简体中文-商业版 提取器 v1.0.0.0";
+            this.Text = "WinRAR 简体中文-商业版 提取器 v1.0.0.1";
             this.Load += new System.EventHandler(this.frmExtractor_Load);
             this.gbTop.ResumeLayout(false);
             this.gbTop.PerformLayout();
