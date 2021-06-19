@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRAR-Extractor", "WinRAR-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "说明文档", "说明文档", "{36A48AF4-68C7-48C1-84DC-1D625A8108D0}"
 	ProjectSection(SolutionItems) = preProject
-		ReadMe.md = ReadMe.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinRAR-Generate", "WinRAR-Generate\WinRAR-Generate.vcxproj", "{E510275F-C4D1-4E4A-922C-9856CF1C8908}"

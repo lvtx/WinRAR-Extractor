@@ -40,11 +40,15 @@
             this.labName = new System.Windows.Forms.Label();
             this.gbFill = new System.Windows.Forms.GroupBox();
             this.gbWRR = new System.Windows.Forms.GroupBox();
+            this.btnwrrx64 = new System.Windows.Forms.Button();
+            this.btnwrrx86 = new System.Windows.Forms.Button();
             this.tbwrrx64 = new System.Windows.Forms.TextBox();
             this.tbwrrx86 = new System.Windows.Forms.TextBox();
             this.labwrrx64 = new System.Windows.Forms.Label();
             this.labwrrx86 = new System.Windows.Forms.Label();
             this.gbRRLB = new System.Windows.Forms.GroupBox();
+            this.btnrrlbx64 = new System.Windows.Forms.Button();
+            this.btnrrlbx86 = new System.Windows.Forms.Button();
             this.tbrrlbx64 = new System.Windows.Forms.TextBox();
             this.tbrrlbx86 = new System.Windows.Forms.TextBox();
             this.labrrlbx64 = new System.Windows.Forms.Label();
@@ -164,6 +168,8 @@
             // 
             // gbWRR
             // 
+            this.gbWRR.Controls.Add(this.btnwrrx64);
+            this.gbWRR.Controls.Add(this.btnwrrx86);
             this.gbWRR.Controls.Add(this.tbwrrx64);
             this.gbWRR.Controls.Add(this.tbwrrx86);
             this.gbWRR.Controls.Add(this.labwrrx64);
@@ -176,18 +182,38 @@
             this.gbWRR.TabStop = false;
             this.gbWRR.Text = "商业发行版";
             // 
+            // btnwrrx64
+            // 
+            this.btnwrrx64.Location = new System.Drawing.Point(618, 57);
+            this.btnwrrx64.Name = "btnwrrx64";
+            this.btnwrrx64.Size = new System.Drawing.Size(50, 23);
+            this.btnwrrx64.TabIndex = 5;
+            this.btnwrrx64.Text = "下载";
+            this.btnwrrx64.UseVisualStyleBackColor = true;
+            this.btnwrrx64.Click += new System.EventHandler(this.btnwrrx64_Click);
+            // 
+            // btnwrrx86
+            // 
+            this.btnwrrx86.Location = new System.Drawing.Point(618, 27);
+            this.btnwrrx86.Name = "btnwrrx86";
+            this.btnwrrx86.Size = new System.Drawing.Size(50, 23);
+            this.btnwrrx86.TabIndex = 4;
+            this.btnwrrx86.Text = "下载";
+            this.btnwrrx86.UseVisualStyleBackColor = true;
+            this.btnwrrx86.Click += new System.EventHandler(this.btnwrrx86_Click);
+            // 
             // tbwrrx64
             // 
             this.tbwrrx64.Location = new System.Drawing.Point(68, 58);
             this.tbwrrx64.Name = "tbwrrx64";
-            this.tbwrrx64.Size = new System.Drawing.Size(600, 23);
+            this.tbwrrx64.Size = new System.Drawing.Size(540, 23);
             this.tbwrrx64.TabIndex = 3;
             // 
             // tbwrrx86
             // 
             this.tbwrrx86.Location = new System.Drawing.Point(68, 28);
             this.tbwrrx86.Name = "tbwrrx86";
-            this.tbwrrx86.Size = new System.Drawing.Size(600, 23);
+            this.tbwrrx86.Size = new System.Drawing.Size(540, 23);
             this.tbwrrx86.TabIndex = 2;
             // 
             // labwrrx64
@@ -210,6 +236,8 @@
             // 
             // gbRRLB
             // 
+            this.gbRRLB.Controls.Add(this.btnrrlbx64);
+            this.gbRRLB.Controls.Add(this.btnrrlbx86);
             this.gbRRLB.Controls.Add(this.tbrrlbx64);
             this.gbRRLB.Controls.Add(this.tbrrlbx86);
             this.gbRRLB.Controls.Add(this.labrrlbx64);
@@ -222,18 +250,38 @@
             this.gbRRLB.TabStop = false;
             this.gbRRLB.Text = "实验室开发版";
             // 
+            // btnrrlbx64
+            // 
+            this.btnrrlbx64.Location = new System.Drawing.Point(618, 57);
+            this.btnrrlbx64.Name = "btnrrlbx64";
+            this.btnrrlbx64.Size = new System.Drawing.Size(50, 23);
+            this.btnrrlbx64.TabIndex = 5;
+            this.btnrrlbx64.Text = "下载";
+            this.btnrrlbx64.UseVisualStyleBackColor = true;
+            this.btnrrlbx64.Click += new System.EventHandler(this.btnrrlbx64_Click);
+            // 
+            // btnrrlbx86
+            // 
+            this.btnrrlbx86.Location = new System.Drawing.Point(618, 27);
+            this.btnrrlbx86.Name = "btnrrlbx86";
+            this.btnrrlbx86.Size = new System.Drawing.Size(50, 23);
+            this.btnrrlbx86.TabIndex = 4;
+            this.btnrrlbx86.Text = "下载";
+            this.btnrrlbx86.UseVisualStyleBackColor = true;
+            this.btnrrlbx86.Click += new System.EventHandler(this.btnrrlbx86_Click);
+            // 
             // tbrrlbx64
             // 
             this.tbrrlbx64.Location = new System.Drawing.Point(68, 58);
             this.tbrrlbx64.Name = "tbrrlbx64";
-            this.tbrrlbx64.Size = new System.Drawing.Size(600, 23);
+            this.tbrrlbx64.Size = new System.Drawing.Size(540, 23);
             this.tbrrlbx64.TabIndex = 3;
             // 
             // tbrrlbx86
             // 
             this.tbrrlbx86.Location = new System.Drawing.Point(68, 28);
             this.tbrrlbx86.Name = "tbrrlbx86";
-            this.tbrrlbx86.Size = new System.Drawing.Size(600, 23);
+            this.tbrrlbx86.Size = new System.Drawing.Size(540, 23);
             this.tbrrlbx86.TabIndex = 2;
             // 
             // labrrlbx64
@@ -268,7 +316,7 @@
             this.MaximizeBox = false;
             this.Name = "frmExtractor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WinRAR 简体中文-商业版 提取器 v1.0.0.1";
+            this.Text = "WinRAR 简体中文-商业版 提取器";
             this.Load += new System.EventHandler(this.frmExtractor_Load);
             this.gbTop.ResumeLayout(false);
             this.gbTop.PerformLayout();
@@ -305,6 +353,10 @@
         private System.Windows.Forms.TextBox tbLicense;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.Button btnrrlbx86;
+        private System.Windows.Forms.Button btnwrrx64;
+        private System.Windows.Forms.Button btnwrrx86;
+        private System.Windows.Forms.Button btnrrlbx64;
     }
 }
 

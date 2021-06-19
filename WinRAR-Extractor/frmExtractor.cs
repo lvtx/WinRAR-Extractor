@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,9 +18,13 @@ namespace WinRAR_Extractor
 {
     public partial class frmExtractor : Form
     {
+        private string Version = string.Empty;
+
         public frmExtractor()
         {
             InitializeComponent();
+            this.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = $"WinRAR 简体中文-商业版 提取器 v{this.Version}";
         }
 
         private void frmExtractor_Load(object sender, EventArgs e)
@@ -73,7 +79,27 @@ namespace WinRAR_Extractor
             //string gmt = "Wed, 14 Apr 2021 11:30:20 GMT";
             //Console.WriteLine(this.GMT2Local(gmt));
         }
-        
+
+        private void btnrrlbx86_Click(object sender, EventArgs e)
+        {
+            this.BrowserUrl(tbrrlbx86.Text.Trim());
+        }
+
+        private void btnrrlbx64_Click(object sender, EventArgs e)
+        {
+            this.BrowserUrl(tbrrlbx64.Text.Trim());
+        }
+
+        private void btnwrrx86_Click(object sender, EventArgs e)
+        {
+            this.BrowserUrl(tbwrrx86.Text.Trim());
+        }
+
+        private void btnwrrx64_Click(object sender, EventArgs e)
+        {
+            this.BrowserUrl(tbwrrx64.Text.Trim());
+        }
+
         [DllImport("WinRAR-Generate.dll", CharSet = CharSet.Ansi, EntryPoint = "KeyGenerate", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr KeyGenerate(string UserName, string LicenseType);
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -135,6 +161,23 @@ namespace WinRAR_Extractor
             {
             }
             return dt;
+        }
+
+        public void BrowserUrl(string target)
+        {
+            try
+            {
+                Process.Start(target);
+            }
+            catch (Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    MessageBox.Show(noBrowser.Message);
+            }
+            catch (Exception other)
+            {
+                MessageBox.Show(other.Message);
+            }
         }
     }
 }
