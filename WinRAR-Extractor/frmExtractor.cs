@@ -55,7 +55,7 @@ namespace WinRAR_Extractor
                 white14link = white14link.NextMatch();
             }
             
-            string freeUrl_x86 = $"https://www.winrar.com.cn/download/wrar{version}scp.exe";
+            string freeUrl_x86 = $"https://www.winrar.com.cn/download/winrar-x32-{version}scp.exe";
             string lastModified_x86 = HttpWebHelper.GetHttpWebData(freeUrl_x86, 3000, null, true);
             //Console.WriteLine(lastModified_x86);
             
@@ -65,9 +65,9 @@ namespace WinRAR_Extractor
 
             this.labVersion.Text = $"最新版本：{version}，更新时间：{lastModified_x86} - [简体中文]";
 
-            string rrlb_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/wrar{version}sc.exe";
+            string rrlb_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/winrar-x32-{version}sc.exe";
             string rrlb_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/rrlb/winrar-x64-{version}sc.exe";
-            string wrr_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/wrr/wrar{version}sc.exe";
+            string wrr_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/wrr/winrar-x32-{version}sc.exe";
             string wrr_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/wrr/winrar-x64-{version}sc.exe";
 
             this.tbrrlbx86.Text = rrlb_x86;
