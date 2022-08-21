@@ -87,9 +87,9 @@
             this.labVersion.AutoSize = true;
             this.labVersion.Location = new System.Drawing.Point(8, 22);
             this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(286, 17);
+            this.labVersion.Size = new System.Drawing.Size(452, 17);
             this.labVersion.TabIndex = 0;
-            this.labVersion.Text = "最新版本：000，更新时间：00000000 - [简体中文]";
+            this.labVersion.Text = "最新版本：[0000]，更新时间：[00000000]-[x86] / [00000000]-[x64] - [简体中文]";
             // 
             // gbBottom
             // 
