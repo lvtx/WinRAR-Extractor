@@ -22,7 +22,7 @@
     <ProjectGuid>{E510275F-C4D1-4E4A-922C-9856CF1C8908}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>WinRARGenerate</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

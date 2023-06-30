@@ -91,6 +91,30 @@ namespace WinRAR_Extractor
             string lastModified_x64 = HttpWebHelper.GetHttpWebData(freeUrl_x64, 3000, null, true);
             //Console.WriteLine(lastModified_x64);
 
+            int lmCheck = Convert.ToInt32(lastModified_x86);
+            while (lmCheck > 0)
+            {
+                if (!HttpWebHelper.GetHttpCheck($"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/{lastSCname_x86.Value}sc.exe", 3000, null, true))
+                {
+                    lmCheck--;
+                    lastModified_x86 = lmCheck.ToString();
+                    continue;
+                }
+                break;
+            }
+
+            lmCheck = Convert.ToInt32(lastModified_x64);
+            while (lmCheck > 0)
+            {
+                if (!HttpWebHelper.GetHttpCheck($"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/rrlb/{lastSCname_x64.Value}sc.exe", 3000, null, true))
+                {
+                    lmCheck--;
+                    lastModified_x64 = lmCheck.ToString();
+                    continue;
+                }
+                break;
+            }
+
             this.labVersion.Text = $"最新版本：[{version}]，更新时间：[{lastModified_x86}]-[x86] / [{lastModified_x64}]-[x64] - [简体中文]";
 
             string rrlb_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/{lastSCname_x86.Value}sc.exe";
