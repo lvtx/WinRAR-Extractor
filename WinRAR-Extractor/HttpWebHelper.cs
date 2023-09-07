@@ -34,10 +34,25 @@ namespace WinRAR_Extractor
         /// <param name="userAgent">请求的客户端浏览器信息，可以为空</param>
         /// <param name="cookies">随同HTTP请求发送的Cookie信息，如果不需要身份验证可以为空</param>
         /// <returns></returns>
-        public static string GetHttpWebData(string url, int? timeout, string userAgent, bool lastModified = false)
+        public static string GetHttpWebData(string url, int? timeout, string userAgent = null, bool lastModified = false)
         {
             lock (_lotGetLocker)
             {
+                //如果是发送HTTPS请求
+                if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
+                {
+                    // 请求前设置一下使用的安全协议类型
+                    ServicePointManager.DefaultConnectionLimit = 512;
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.CheckCertificateRevocationList = false;
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3
+                        | (SecurityProtocolType)12288   // SecurityProtocolType.Tls13
+                        | SecurityProtocolType.Tls12
+                        | SecurityProtocolType.Tls11
+                        | SecurityProtocolType.Tls;
+                    ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
+                }
+
                 HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
                 string WebData = string.Empty;
                 try
@@ -47,17 +62,7 @@ namespace WinRAR_Extractor
                         throw new ArgumentNullException("url");
                     }
 
-                    //如果是发送HTTPS请求
-                    if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
-                    {
-                        // 请求前设置一下使用的安全协议类型
-                        ServicePointManager.DefaultConnectionLimit = 512;
-                        ServicePointManager.Expect100Continue = true;
-                        ServicePointManager.CheckCertificateRevocationList = false;
-                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-                        ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
-                    }
-
+                    request.ProtocolVersion = HttpVersion.Version10;
                     request.Method = "GET";
                     request.UserAgent = DefaultUserAgent;
                     request.Accept = "text/html";

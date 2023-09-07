@@ -34,8 +34,8 @@ namespace WinRAR_Extractor
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            string checkUrl = "https://www.winrar.com.cn/download.htm";
-            string html = HttpWebHelper.GetHttpWebData(checkUrl, 3000, null);
+            string checkUrl = "https://www.win-rar.com/download.html";
+            string html = HttpWebHelper.GetHttpWebData(checkUrl, 3000);
             //Console.WriteLine(html);
 
             int version = 0;
@@ -43,15 +43,15 @@ namespace WinRAR_Extractor
             string freeUrl_x64 = string.Empty;
 
             Match white14Link = Regex.Match(html,
-                "(?<=<a href=\")download-.+?(32|64)scp.html(?=\" target=\"_blank\" class=\"white14link\">(32|64)位下载</a>)",
-                RegexOptions.Multiline | RegexOptions.Singleline);
+                "(?<=<a href=\"https://www.win-rar.com/fileadmin/winrar-versions/winrar/)winrar-x(32|64)-[0-9]+sc.exe(?=\">WinRAR (.+?) Chinese Simplified (32|64) bit</a>)",
+            RegexOptions.Multiline | RegexOptions.Singleline);
             //Console.WriteLine(white14Link.Groups.Count);
 
             while (white14Link.Success)
             {
                 //Console.WriteLine(white14Link.Value);
                 int result = 0, bit = 0;
-                Match versionLink = Regex.Match(white14Link.Value, "(?<=download-).+?(?=(32|64)scp.html)");
+                Match versionLink = Regex.Match(white14Link.Value, "(?<=winrar-x(32|64)-).+?(?=sc.exe)");
                 //Console.WriteLine(versionLink.Value);
 
                 if (int.TryParse(versionLink.Value, out result))
@@ -59,68 +59,39 @@ namespace WinRAR_Extractor
                     if (version <= result)
                     {
                         version = result;
-                        Match bitLink = Regex.Match(white14Link.Value, $"(?<=download-{version}).+?(?=scp.html)");
+                        Match bitLink = Regex.Match(white14Link.Value, $"(?<=winrar-x).+?(?=-{version}sc.exe)");
                         //Console.WriteLine(bitLink.Value);
-
-                        string downloadUrl = $"https://www.winrar.com.cn/{white14Link.Value}";
-                        //Console.WriteLine(downloadUrl);
-                        string htmld = HttpWebHelper.GetHttpWebData(downloadUrl, 3000, null);
-                        //Console.WriteLine(htmld);
-
-                        Match downloadLink = Regex.Match(htmld, $"(?<=meta http-equiv=\"refresh\" content=\".+?;url=).*?(?=\")");
-                        //Console.WriteLine(downloadLink.Value);
+                        
+                        string downloadLink = white14Link.Value;
+                        //Console.WriteLine(downloadLink);
 
                         if (int.TryParse(bitLink.Value, out bit) && bit != 64)
                         {
-                            freeUrl_x86 = downloadLink.Value;
+                            freeUrl_x86 = downloadLink;
                         }
                         else
                         {
-                            freeUrl_x64 = downloadLink.Value;
+                            freeUrl_x64 = downloadLink;
                         }
                     }
                 }
                 white14Link = white14Link.NextMatch();
             }
 
-            Match lastSCname_x86 = Regex.Match(freeUrl_x86, "(?<=https://www.winrar.com.cn/download/).+?(?=scp.exe)");
-            string lastModified_x86 = HttpWebHelper.GetHttpWebData(freeUrl_x86, 3000, null, true);
+            string lastSCname_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/winrar/{freeUrl_x86}";
+            string lastModified_x86 = HttpWebHelper.GetHttpWebData(lastSCname_x86, 3000, null, true);
             //Console.WriteLine(lastModified_x86);
 
-            Match lastSCname_x64 = Regex.Match(freeUrl_x64, "(?<=https://www.winrar.com.cn/download/).+?(?=scp.exe)");
-            string lastModified_x64 = HttpWebHelper.GetHttpWebData(freeUrl_x64, 3000, null, true);
+            string lastSCname_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/winrar/{freeUrl_x64}";
+            string lastModified_x64 = HttpWebHelper.GetHttpWebData(lastSCname_x64, 3000, null, true);
             //Console.WriteLine(lastModified_x64);
-
-            int lmCheck = Convert.ToInt32(lastModified_x86);
-            while (lmCheck > 0)
-            {
-                if (!HttpWebHelper.GetHttpCheck($"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/{lastSCname_x86.Value}sc.exe", 3000, null, true))
-                {
-                    lmCheck--;
-                    lastModified_x86 = lmCheck.ToString();
-                    continue;
-                }
-                break;
-            }
-
-            lmCheck = Convert.ToInt32(lastModified_x64);
-            while (lmCheck > 0)
-            {
-                if (!HttpWebHelper.GetHttpCheck($"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/rrlb/{lastSCname_x64.Value}sc.exe", 3000, null, true))
-                {
-                    lmCheck--;
-                    lastModified_x64 = lmCheck.ToString();
-                    continue;
-                }
-                break;
-            }
 
             this.labVersion.Text = $"最新版本：[{version}]，更新时间：[{lastModified_x86}]-[x86] / [{lastModified_x64}]-[x64] - [简体中文]";
 
-            string rrlb_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/{lastSCname_x86.Value}sc.exe";
-            string rrlb_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/rrlb/{lastSCname_x64.Value}sc.exe";
-            string wrr_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/wrr/{lastSCname_x86.Value}sc.exe";
-            string wrr_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/wrr/{lastSCname_x64.Value}sc.exe";
+            string rrlb_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/rrlb/{freeUrl_x86}";
+            string rrlb_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/rrlb/{freeUrl_x64}";
+            string wrr_x86 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x86}/wrr/{freeUrl_x86}";
+            string wrr_x64 = $"https://www.win-rar.com/fileadmin/winrar-versions/sc/sc{lastModified_x64}/wrr/{freeUrl_x64}";
 
             this.tbrrlbx86.Text = rrlb_x86;
             this.tbrrlbx64.Text = rrlb_x64;
